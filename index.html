@@ -21,6 +21,7 @@
     .card{border:1px solid var(--border);border-radius:14px;background:var(--card);padding:16px;}
     .badge{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;background:#fff;margin-right:8px;margin-bottom:8px;}
     a{color:var(--link);}
+
     /* TikTok Login Button */
     .tiktok-login{
       display:inline-flex;align-items:center;gap:10px;
@@ -30,15 +31,79 @@
     }
     .tiktok-login:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.22);}
     .tiktok-login svg{width:18px;height:18px;}
+
     .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px;}
     .secondary{
       display:inline-flex;align-items:center;gap:8px;
       padding:12px 16px;border:1px solid var(--border);border-radius:12px;
       text-decoration:none;background:#fff;color:#111;font-weight:600;
     }
+
     footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;}
     .footerlinks a{margin-right:14px;}
     ul{padding-left:18px;margin:10px 0;}
+
+    /* Demo Upload UI */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:12px;border:1px solid var(--border);
+      background:#fff;color:#111;font-weight:700;cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease;
+      text-decoration:none;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.10);}
+    .btn-primary{
+      background:#111;color:#fff;border-color:#111;
+    }
+    .btn-primary:hover{box-shadow:0 10px 24px rgba(0,0,0,.22);}
+    .field{display:grid;gap:6px;}
+    .label{font-weight:700;font-size:13px;color:#222;}
+    .input, .textarea, .select{
+      padding:12px 12px;border:1px solid var(--border);border-radius:12px;
+      background:#fff;font:inherit;outline:none;
+    }
+    .textarea{min-height:88px;resize:vertical;}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    @media (max-width:720px){.row{grid-template-columns:1fr;}}
+    .status{
+      margin-top:12px;padding:12px 12px;border:1px dashed var(--border);border-radius:12px;
+      background:#fff;color:#222;font-size:14px;
+    }
+    .pill{
+      display:inline-block;margin-left:8px;padding:3px 10px;border-radius:999px;
+      border:1px solid var(--border);background:#fff;font-size:12px;color:#333;
+    }
+    dialog{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:0;
+      width:min(720px, 92vw);
+      box-shadow:0 18px 60px rgba(0,0,0,.18);
+    }
+    .dlg-head{
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--border);
+      background:var(--card);
+      border-top-left-radius:16px;border-top-right-radius:16px;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+    }
+    .dlg-title{margin:0;font-size:18px;}
+    .dlg-body{padding:16px;}
+    .dlg-actions{
+      padding:14px 16px;
+      border-top:1px solid var(--border);
+      display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;
+      background:#fff;
+      border-bottom-left-radius:16px;border-bottom-right-radius:16px;
+    }
+    .xbtn{
+      border:0;background:transparent;cursor:pointer;font-size:18px;line-height:1;
+      padding:6px 8px;border-radius:10px;
+    }
+    .xbtn:hover{background:#fff;border:1px solid var(--border);padding:5px 7px;}
+    .note{
+      font-size:13px;color:var(--muted);margin-top:10px;
+    }
   </style>
 </head>
 
@@ -93,6 +158,92 @@
         </ul>
       </div>
     </div>
+
+    <!-- Demo UI for review (clickable) -->
+    <section class="card" style="margin-top:18px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div>
+          <h2 style="margin:0 0 6px;font-size:18px;">Demo: Upload to TikTok (Draft)</h2>
+          <p class="muted" style="margin:0;">
+            Clickable demo UI for verification. <strong>Draft upload only.</strong> No automatic posting.
+            <span class="pill">Simulated on this static site</span>
+          </p>
+        </div>
+        <button id="openDemo" class="btn btn-primary" type="button">Open upload menu</button>
+      </div>
+
+      <div id="demoInlineStatus" class="status" aria-live="polite" style="margin-top:14px;">
+        Status: waiting for user action.
+      </div>
+
+      <p class="note">
+        Note: This page is for TikTok app review. The demo simulates the user flow; real API calls happen in the actual web app.
+      </p>
+    </section>
+
+    <!-- Modal / Menu -->
+    <dialog id="demoDialog" aria-labelledby="demoTitle">
+      <div class="dlg-head">
+        <div>
+          <h3 class="dlg-title" id="demoTitle">Upload menu (Draft only)</h3>
+          <div class="muted" style="font-size:13px;margin-top:4px;">
+            User selects a file + caption, then clicks Upload. Result: Draft created (simulated). No auto-post.
+          </div>
+        </div>
+        <button class="xbtn" type="button" id="closeDemo" aria-label="Close">✕</button>
+      </div>
+
+      <form class="dlg-body" id="demoForm">
+        <div class="field">
+          <div class="label">Video file</div>
+          <input class="input" id="demoFile" type="file" accept="video/*" />
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+          <div class="label">Caption</div>
+          <input class="input" id="demoCaption" type="text" placeholder="Enter caption (demo)" maxlength="150" />
+          <div class="muted" style="font-size:12px;">Max 150 characters (demo).</div>
+        </div>
+
+        <div class="row" style="margin-top:12px;">
+          <div class="field">
+            <div class="label">Visibility (demo)</div>
+            <select class="select" id="demoVisibility">
+              <option value="public">Public</option>
+              <option value="friends">Friends</option>
+              <option value="private">Only me</option>
+            </select>
+          </div>
+          <div class="field">
+            <div class="label">Cover (demo)</div>
+            <select class="select" id="demoCover">
+              <option value="auto">Auto-generate</option>
+              <option value="frame1">Frame 1</option>
+              <option value="frame2">Frame 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+          <div class="label">Notes (optional, demo)</div>
+          <textarea class="textarea" id="demoNotes" placeholder="Optional notes (demo)"></textarea>
+        </div>
+
+        <div id="demoStatus" class="status" aria-live="polite">
+          Status: fill in the fields, then click “Upload to Drafts”.
+        </div>
+
+        <div class="note">
+          Scopes used (review): <code>user.info.basic</code>, <code>video.upload</code>. No <code>video.publish</code>. Direct Post OFF.
+        </div>
+      </form>
+
+      <div class="dlg-actions">
+        <button class="btn" type="button" id="cancelDemo">Cancel</button>
+        <button class="btn btn-primary" type="button" id="runUpload">Upload to Drafts</button>
+      </div>
+    </dialog>
+
   </main>
 
   <footer>
@@ -104,5 +255,90 @@
     <div style="margin-top:10px;">© <span id="y"></span> TT-Poster</div>
     <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
   </footer>
+
+  <script>
+    (function () {
+      const dlg = document.getElementById('demoDialog');
+      const openBtn = document.getElementById('openDemo');
+      const closeBtn = document.getElementById('closeDemo');
+      const cancelBtn = document.getElementById('cancelDemo');
+      const uploadBtn = document.getElementById('runUpload');
+
+      const fileEl = document.getElementById('demoFile');
+      const captionEl = document.getElementById('demoCaption');
+      const visibilityEl = document.getElementById('demoVisibility');
+      const coverEl = document.getElementById('demoCover');
+      const notesEl = document.getElementById('demoNotes');
+
+      const statusEl = document.getElementById('demoStatus');
+      const inlineStatusEl = document.getElementById('demoInlineStatus');
+
+      function openDialog() {
+        if (typeof dlg.showModal === 'function') dlg.showModal();
+        else dlg.setAttribute('open', 'open'); // fallback
+      }
+      function closeDialog() {
+        if (typeof dlg.close === 'function') dlg.close();
+        else dlg.removeAttribute('open');
+      }
+
+      openBtn.addEventListener('click', openDialog);
+      closeBtn.addEventListener('click', closeDialog);
+      cancelBtn.addEventListener('click', closeDialog);
+
+      // close on backdrop click
+      dlg.addEventListener('click', (e) => {
+        const rect = dlg.getBoundingClientRect();
+        const inDialog = (
+          rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+        );
+        if (!inDialog) closeDialog();
+      });
+
+      function setStatus(text) {
+        statusEl.textContent = text;
+        inlineStatusEl.textContent = text;
+      }
+
+      uploadBtn.addEventListener('click', () => {
+        const hasFile = fileEl.files && fileEl.files.length > 0;
+        const caption = (captionEl.value || '').trim();
+
+        if (!hasFile) {
+          setStatus('Status: please select a video file first (demo).');
+          return;
+        }
+        if (!caption) {
+          setStatus('Status: please enter a caption first (demo).');
+          return;
+        }
+
+        const fileName = fileEl.files[0].name;
+        const visibility = visibilityEl.value;
+        const cover = coverEl.value;
+
+        setStatus('Status: demo upload started…');
+
+        // Simulate progress
+        uploadBtn.disabled = true;
+        uploadBtn.textContent = 'Uploading…';
+        setTimeout(() => setStatus('Status: uploading video file to TikTok (demo)…'), 700);
+        setTimeout(() => setStatus('Status: creating draft in TikTok (demo)…'), 1400);
+
+        setTimeout(() => {
+          setStatus(
+            `Status: Demo complete — Draft created (simulated). ` +
+            `File: "${fileName}", Visibility: ${visibility}, Cover: ${cover}. No auto-post.`
+          );
+          uploadBtn.disabled = false;
+          uploadBtn.textContent = 'Upload to Drafts';
+
+          // Keep dialog open so reviewer sees fields; optional close:
+          // closeDialog();
+        }, 2200);
+      });
+    })();
+  </script>
 </body>
 </html>
