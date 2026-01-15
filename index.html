@@ -1,229 +1,98 @@
-<!-- terms.html  (Terms of Service – TT-Poster) -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terms of Service – TT-Poster</title>
-  <meta name="description" content="Terms of Service for the TT-Poster web application." />
+  <title>TT-Poster – Draft Upload Tool</title>
+  <meta name="description" content="TT-Poster is a web-based tool using TikTok Login and the Content Posting API to upload videos as drafts." />
   <style>
-    :root { --bg:#ffffff; --text:#111; --muted:#555; --border:#e6e6e6; --link:#0b57d0; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
-    header, main, footer { max-width: 980px; margin: 0 auto; padding: 24px; }
-    header { border-bottom:1px solid var(--border); }
-    h1 { margin:0 0 6px; font-size: 28px; }
-    .meta { color:var(--muted); font-size:14px; }
-    nav.toc { margin:18px 0 0; padding:14px 16px; border:1px solid var(--border); border-radius:10px; background:#fafafa; }
-    nav.toc strong { display:block; margin-bottom:8px; }
-    nav.toc a { display:inline-block; margin:4px 10px 4px 0; color:var(--link); text-decoration:none; }
-    nav.toc a:hover { text-decoration:underline; }
-    h2 { margin-top: 28px; font-size: 20px; }
-    h3 { margin-top: 18px; font-size: 16px; }
-    p, li { color: #1a1a1a; }
-    .muted { color: var(--muted); }
-    .box { border:1px solid var(--border); border-radius:10px; padding:14px 16px; background:#fff; }
-    a { color: var(--link); }
-    code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
-    footer { border-top:1px solid var(--border); color:var(--muted); font-size:14px; }
-    .footerlinks a { margin-right:14px; }
-    ul { padding-left: 18px; }
+    :root{
+      --bg:#ffffff; --text:#111; --muted:#555; --border:#e6e6e6;
+      --link:#0b57d0; --card:#fafafa;
+    }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+    header,main,footer{max-width:980px;margin:0 auto;padding:24px;}
+    header{border-bottom:1px solid var(--border);}
+    h1{margin:0 0 10px;font-size:30px;letter-spacing:-0.2px;}
+    p{margin:10px 0;color:#1a1a1a;}
+    .muted{color:var(--muted);}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start;}
+    @media (max-width:820px){.grid{grid-template-columns:1fr;}}
+    .card{border:1px solid var(--border);border-radius:14px;background:var(--card);padding:16px;}
+    .badge{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;background:#fff;margin-right:8px;margin-bottom:8px;}
+    a{color:var(--link);}
     /* TikTok Login Button */
-    .tiktok-login {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      background: #000;
-      color: #fff;
-      border-radius: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    .tiktok-login{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 18px;background:#000;color:#fff;border-radius:12px;
+      font-weight:650;text-decoration:none;
+      transition:transform .15s ease, box-shadow .15s ease;
     }
-    
-    .tiktok-login:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    .tiktok-login:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.22);}
+    .tiktok-login svg{width:18px;height:18px;}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+    .secondary{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:12px 16px;border:1px solid var(--border);border-radius:12px;
+      text-decoration:none;background:#fff;color:#111;font-weight:600;
     }
-    
-    .tiktok-login svg {
-      width: 18px;
-      height: 18px;
-    }
+    footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;}
+    .footerlinks a{margin-right:14px;}
+    ul{padding-left:18px;margin:10px 0;}
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Terms of Service – TT-Poster</h1>
-    <div class="meta">
-      Effective date: <strong>2026-01-15</strong> ·
-      Contact: <a href="mailto:ttposter@gmx.de">ttposter@gmx.de</a>
-    </div>
+    <h1>TT-Poster</h1>
+    <p class="muted">
+      Web-based tool for TikTok creators: login with TikTok and upload a video file as a <strong>draft</strong> via the Content Posting API.
+    </p>
 
-    <nav class="toc" aria-label="Table of contents">
-      <strong>Contents</strong>
-      <a href="#about">1. About TT-Poster</a>
-      <a href="#eligibility">2. Eligibility</a>
-      <a href="#account">3. Accounts & TikTok Connection</a>
-      <a href="#service">4. Service Description</a>
-      <a href="#usercontent">5. Your Content & Responsibility</a>
-      <a href="#prohibited">6. Prohibited Use</a>
-      <a href="#thirdparty">7. Third-Party Services</a>
-      <a href="#privacy">8. Privacy</a>
-      <a href="#availability">9. Availability & Changes</a>
-      <a href="#termination">10. Termination</a>
-      <a href="#disclaimer">11. Disclaimers</a>
-      <a href="#liability">12. Limitation of Liability</a>
-      <a href="#law">13. Governing Law</a>
-      <a href="#contact">14. Contact</a>
-    </nav>
-    <div style="margin-top:24px;">
-      <a
-        class="tiktok-login"
-        href="https://m.tiktok.com/login?lang=de-DE"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <!-- TikTok Icon -->
+    <div class="cta-row">
+      <a class="tiktok-login" href="https://m.tiktok.com/login?lang=de-DE" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M21 8.5c-1.9.1-3.7-.6-5-1.9V16a6 6 0 1 1-6-6c.3 0 .7 0 1 .1v3.1a2.9 2.9 0 1 0 2 2.8V2h3.1c.3 2.7 2.5 4.8 5.9 4.9v1.6z"/>
         </svg>
         Login with TikTok
       </a>
+
+      <a class="secondary" href="./privacy.html">Privacy Policy</a>
+      <a class="secondary" href="./terms.html">Terms of Service</a>
     </div>
   </header>
+
   <main>
-    <section id="about">
-      <h2>1. About TT-Poster</h2>
-      <div class="box">
-        <p><strong>TT-Poster</strong> is a web-based tool that helps users prepare and publish video content to TikTok using TikTok’s official APIs (where available and permitted).</p>
-        <p class="muted">TT-Poster is not affiliated with TikTok or ByteDance. “TikTok” is a trademark of its respective owner.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="badge">TikTok Login Kit</div>
+        <div class="badge">Content Posting API</div>
+        <div class="badge">Draft Upload (no auto-post)</div>
+
+        <h2 style="margin:10px 0 6px;font-size:18px;">How it works</h2>
+        <ul>
+          <li>User authenticates using TikTok Login.</li>
+          <li>User selects a video file and enters a caption.</li>
+          <li>TT-Poster uploads the video as a <strong>draft</strong> to the user’s TikTok account.</li>
+          <li>Publishing happens only after explicit user action inside TikTok.</li>
+        </ul>
+
+        <p class="muted" style="margin-top:10px;">
+          TT-Poster does not automatically publish content and does not request <code>video.publish</code>.
+        </p>
       </div>
-    </section>
 
-    <section id="eligibility">
-      <h2>2. Eligibility</h2>
-      <p>You may use TT-Poster only if:</p>
-      <ul>
-        <li>You can form a legally binding agreement in your jurisdiction.</li>
-        <li>You comply with TikTok’s terms, policies, and community guidelines.</li>
-        <li>You have the authority to connect and manage the TikTok account(s) you use with TT-Poster.</li>
-      </ul>
-    </section>
-
-    <section id="account">
-      <h2>3. Accounts & TikTok Connection</h2>
-
-      <h3>3.1 TikTok authorization</h3>
-      <p>To use posting features, you must connect a TikTok account via TikTok’s authorization flow. You grant TT-Poster permission to perform actions you explicitly request (for example: upload a video as a draft or publish, depending on what your TikTok authorization and the product permissions allow).</p>
-
-      <h3>3.2 Credentials</h3>
-      <p>Do not share your TT-Poster access credentials or connected accounts. You are responsible for all actions taken through your TT-Poster session, including actions taken by anyone with access to your device or accounts.</p>
-
-      <h3>3.3 Revoking access</h3>
-      <p>You can revoke TT-Poster’s access at any time via TikTok’s settings (or other relevant account settings). After revocation, TT-Poster may no longer be able to post or upload on your behalf.</p>
-    </section>
-
-    <section id="service">
-      <h2>4. Service Description</h2>
-      <p>TT-Poster may provide features such as:</p>
-      <ul>
-        <li>Uploading video files to TikTok as drafts or for posting (depending on your enabled permissions).</li>
-        <li>Adding metadata you provide (caption text, hashtags, privacy settings, scheduling if available).</li>
-        <li>Basic content organization and status tracking (e.g., uploaded, draft created, published).</li>
-      </ul>
-      <p class="muted">TT-Poster does not guarantee any specific reach, views, engagement, or performance. TikTok’s systems ultimately determine distribution and visibility.</p>
-    </section>
-
-    <section id="usercontent">
-      <h2>5. Your Content & Responsibility</h2>
-
-      <h3>5.1 Ownership</h3>
-      <p>You retain ownership of any videos and content you upload or publish through TT-Poster (“User Content”).</p>
-
-      <h3>5.2 Your responsibility</h3>
-      <p>You are solely responsible for your User Content, including:</p>
-      <ul>
-        <li>Having all rights/permissions to upload and publish (copyright, music licenses, image rights, etc.).</li>
-        <li>Ensuring compliance with TikTok’s policies and applicable laws (including advertising and consumer protection laws).</li>
-        <li>Ensuring your content is accurate and not misleading.</li>
-      </ul>
-
-      <h3>5.3 Limited permission to operate the service</h3>
-      <p>You grant TT-Poster a limited, non-exclusive permission to process your User Content only to provide the service (e.g., transferring your video to TikTok at your request). TT-Poster does not sell your User Content.</p>
-    </section>
-
-    <section id="prohibited">
-      <h2>6. Prohibited Use</h2>
-      <p>You must not:</p>
-      <ul>
-        <li>Use TT-Poster to violate TikTok’s terms, community guidelines, or API policies.</li>
-        <li>Publish illegal content, infringing content, or content that violates third-party rights.</li>
-        <li>Attempt to bypass rate limits, access controls, or security measures.</li>
-        <li>Use TT-Poster for spam, automation abuse, or deceptive behavior.</li>
-        <li>Reverse engineer, disrupt, or interfere with TT-Poster or its infrastructure.</li>
-      </ul>
-    </section>
-
-    <section id="thirdparty">
-      <h2>7. Third-Party Services</h2>
-      <p>TT-Poster relies on third-party services, including TikTok APIs. Your use of those services may be subject to their separate terms and policies.</p>
-      <p>TT-Poster is not responsible for third-party outages, policy changes, enforcement actions, or limitations imposed by TikTok or other providers.</p>
-    </section>
-
-    <section id="privacy">
-      <h2>8. Privacy</h2>
-      <p>Our processing of personal data is described in the <a href="./privacy.html">Privacy Policy</a>. By using TT-Poster, you acknowledge that your data will be processed as described there.</p>
-    </section>
-
-    <section id="availability">
-      <h2>9. Availability & Changes</h2>
-      <p>TT-Poster may be updated, modified, or discontinued at any time. Features may change due to technical reasons, compliance requirements, or third-party policy changes.</p>
-      <p>We may update these Terms. The “Effective date” above indicates when the latest version became effective. Continued use after updates means you accept the updated Terms.</p>
-    </section>
-
-    <section id="termination">
-      <h2>10. Termination</h2>
-      <p>We may suspend or terminate access to TT-Poster if we reasonably believe you violated these Terms, applicable law, or third-party policies, or if required for security/compliance reasons.</p>
-      <p>You may stop using TT-Poster at any time and revoke TikTok access through TikTok’s settings.</p>
-    </section>
-
-    <section id="disclaimer">
-      <h2>11. Disclaimers</h2>
-      <div class="box">
-        <p><strong>TT-Poster is provided “as is” and “as available.”</strong> To the maximum extent permitted by law, we disclaim all warranties, including fitness for a particular purpose, merchantability, and non-infringement.</p>
-        <p>We do not guarantee that TT-Poster will be uninterrupted, error-free, or that posting/uploading will always succeed.</p>
+      <div class="card">
+        <h2 style="margin:0 0 6px;font-size:18px;">Review notes</h2>
+        <p class="muted" style="margin:0 0 10px;">
+          This website is used for TikTok app verification and contains the required legal pages.
+        </p>
+        <ul>
+          <li><a href="./privacy.html">Privacy Policy</a> is accessible from this homepage.</li>
+          <li><a href="./terms.html">Terms of Service</a> is accessible from this homepage.</li>
+        </ul>
       </div>
-    </section>
-
-    <section id="liability">
-      <h2>12. Limitation of Liability</h2>
-      <p>To the maximum extent permitted by law:</p>
-      <ul>
-        <li>TT-Poster is not liable for indirect, incidental, special, consequential, or punitive damages.</li>
-        <li>TT-Poster is not liable for loss of profits, revenue, data, or goodwill arising from your use of the service.</li>
-        <li>TT-Poster is not liable for actions taken by TikTok (e.g., content removal, account restrictions, distribution decisions).</li>
-      </ul>
-      <p>If liability cannot be excluded, it is limited to typical, foreseeable damages and, where applicable, limited to the amount you paid for TT-Poster in the last 3 months (if any).</p>
-    </section>
-
-    <section id="law">
-      <h2>13. Governing Law</h2>
-      <p>These Terms are governed by the laws of <strong>Germany</strong>, excluding conflict-of-law rules, unless mandatory consumer protection laws in your jurisdiction require otherwise.</p>
-      <p>Where permitted, the place of jurisdiction is the provider’s registered location in Germany.</p>
-    </section>
-
-    <section id="contact">
-      <h2>14. Contact</h2>
-      <p>For questions about these Terms or TT-Poster:</p>
-      <ul>
-        <li>Email: <a href="mailto:ttposter@gmx.de">ttposter@gmx.de</a></li>
-      </ul>
-    </section>
-
-    <hr style="border:0;border-top:1px solid #e6e6e6;margin:28px 0;" />
-    <p class="muted">Tip for app review: make this page easily reachable from your homepage (e.g., footer links) and keep the URL stable.</p>
+    </div>
   </main>
 
   <footer>
