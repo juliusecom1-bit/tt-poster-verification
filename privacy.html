@@ -1,40 +1,290 @@
-<!DOCTYPE html>
+<!-- privacy.html (Privacy Policy – TT-Poster) -->
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy – TT-Poster</title>
-  <meta name="robots" content="noindex">
+  <meta name="description" content="Privacy Policy for the TT-Poster web application." />
+  <style>
+    :root { --bg:#ffffff; --text:#111; --muted:#555; --border:#e6e6e6; --link:#0b57d0; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+    header, main, footer { max-width: 980px; margin: 0 auto; padding: 24px; }
+    header { border-bottom:1px solid var(--border); }
+    h1 { margin:0 0 6px; font-size: 28px; }
+    .meta { color:var(--muted); font-size:14px; }
+    nav.toc { margin:18px 0 0; padding:14px 16px; border:1px solid var(--border); border-radius:10px; background:#fafafa; }
+    nav.toc strong { display:block; margin-bottom:8px; }
+    nav.toc a { display:inline-block; margin:4px 10px 4px 0; color:var(--link); text-decoration:none; }
+    nav.toc a:hover { text-decoration:underline; }
+    h2 { margin-top: 28px; font-size: 20px; }
+    h3 { margin-top: 18px; font-size: 16px; }
+    p, li { color:#1a1a1a; }
+    .muted { color: var(--muted); }
+    .box { border:1px solid var(--border); border-radius:10px; padding:14px 16px; background:#fff; }
+    a { color: var(--link); }
+    code { background:#f6f6f6; padding:2px 6px; border-radius:6px; }
+    footer { border-top:1px solid var(--border); color:var(--muted); font-size:14px; }
+    .footerlinks a { margin-right:14px; }
+    ul { padding-left: 18px; }
+    .kvs { display:grid; grid-template-columns: 220px 1fr; gap:10px 14px; }
+    .kvs div { padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:#fafafa; }
+    .kvs strong { display:block; margin-bottom:6px; }
+    @media (max-width: 720px){ .kvs { grid-template-columns: 1fr; } }
+  </style>
 </head>
+
 <body>
-  <h1>Privacy Policy – TT-Poster</h1>
+  <header>
+    <h1>Privacy Policy – TT-Poster</h1>
+    <div class="meta">
+      Effective date: <strong>2026-01-15</strong> ·
+      Contact: <a href="mailto:ttposter@gmx.de">ttposter@gmx.de</a>
+    </div>
 
-  <p>
-    TT-Poster respects user privacy and processes data only as required to provide its service.
-  </p>
+    <nav class="toc" aria-label="Table of contents">
+      <strong>Contents</strong>
+      <a href="#overview">1. Overview</a>
+      <a href="#controller">2. Controller</a>
+      <a href="#data">3. Data We Process</a>
+      <a href="#purposes">4. Purposes & Legal Bases</a>
+      <a href="#tiktok">5. TikTok API & OAuth</a>
+      <a href="#cookies">6. Cookies & Analytics</a>
+      <a href="#sharing">7. Sharing & Recipients</a>
+      <a href="#retention">8. Retention</a>
+      <a href="#security">9. Security</a>
+      <a href="#rights">10. Your Rights</a>
+      <a href="#intl">11. International Transfers</a>
+      <a href="#changes">12. Changes</a>
+      <a href="#contact">13. Contact</a>
+    </nav>
+  </header>
 
-  <h2>Data Collected</h2>
-  <ul>
-    <li>TikTok account authorization tokens</li>
-    <li>Video files uploaded by the user</li>
-    <li>Captions, hashtags, and metadata provided by the user</li>
-  </ul>
+  <main>
+    <section id="overview">
+      <h2>1. Overview</h2>
+      <div class="box">
+        <p>
+          This Privacy Policy explains how <strong>TT-Poster</strong> (“we”, “us”) processes personal data when you use
+          our web-based tool to connect a TikTok account and upload/publish videos using TikTok’s official APIs (where available).
+        </p>
+        <p class="muted">
+          TT-Poster is not affiliated with TikTok or ByteDance. “TikTok” is a trademark of its respective owner.
+        </p>
+      </div>
+    </section>
 
-  <h2>Purpose of Processing</h2>
-  <p>
-    Data is used solely to enable publishing videos to TikTok via the Content Posting API.
-  </p>
+    <section id="controller">
+      <h2>2. Controller</h2>
+      <div class="box">
+        <p><strong>Controller (Data Controller):</strong> TT-Poster</p>
+        <p><strong>Contact:</strong> <a href="mailto:ttposter@gmx.de">ttposter@gmx.de</a></p>
+        <p class="muted">
+          If you are located in the EU/EEA, the GDPR applies to many processing activities described here.
+        </p>
+      </div>
+    </section>
 
-  <h2>Data Sharing</h2>
-  <p>
-    Data is not sold or shared with third parties, except TikTok as required for publishing.
-  </p>
+    <section id="data">
+      <h2>3. Data We Process</h2>
 
-  <h2>Data Retention</h2>
-  <p>
-    Data is stored only as long as necessary to provide the service.
-  </p>
+      <h3>3.1 Data you provide</h3>
+      <ul>
+        <li><strong>Account/contact data</strong> you provide to us (e.g., your email address if you contact support).</li>
+        <li><strong>Content & metadata</strong> you submit for posting (e.g., video file, caption text, hashtags, selected settings).</li>
+      </ul>
 
-  <h2>Contact</h2>
-  <p>Email: ttposter@gmx.de</p>
+      <h3>3.2 Data received from TikTok (after you connect your account)</h3>
+      <p>
+        When you connect via TikTok OAuth, TikTok may provide data depending on the scopes enabled for the app.
+        Typical examples (depending on configuration) include:
+      </p>
+      <ul>
+        <li>Basic profile information (e.g., open_id / user identifier, display name, avatar).</li>
+        <li>Authorization tokens (access token, refresh token) required to perform actions you request.</li>
+      </ul>
+
+      <h3>3.3 Technical and log data</h3>
+      <ul>
+        <li>IP address, user agent, timestamps, approximate request metadata (e.g., pages/actions used).</li>
+        <li>Operational logs needed for security and debugging (e.g., error messages, upload status).</li>
+      </ul>
+
+      <h3>3.4 We do not intentionally collect sensitive data</h3>
+      <p class="muted">
+        Please do not submit sensitive personal data (e.g., health data) through TT-Poster.
+      </p>
+    </section>
+
+    <section id="purposes">
+      <h2>4. Purposes & Legal Bases (GDPR)</h2>
+      <p>Where GDPR applies, we process data for the following purposes and legal bases:</p>
+
+      <div class="kvs" role="list">
+        <div role="listitem">
+          <strong>Provide the service (connect account, upload/publish)</strong>
+          <span>Legal basis: performance of a contract (Art. 6(1)(b) GDPR).</span>
+        </div>
+        <div role="listitem">
+          <strong>Operate, secure, and improve the service</strong>
+          <span>Legal basis: legitimate interests (Art. 6(1)(f) GDPR) in keeping the service secure and reliable.</span>
+        </div>
+        <div role="listitem">
+          <strong>Compliance and enforcement</strong>
+          <span>Legal basis: legal obligation (Art. 6(1)(c) GDPR) or legitimate interests (Art. 6(1)(f) GDPR).</span>
+        </div>
+        <div role="listitem">
+          <strong>Support requests</strong>
+          <span>Legal basis: performance of a contract (Art. 6(1)(b) GDPR) and/or legitimate interests (Art. 6(1)(f) GDPR).</span>
+        </div>
+      </div>
+
+      <p class="muted">
+        If consent is required for certain cookies/analytics, we will request consent before setting them (Art. 6(1)(a) GDPR).
+      </p>
+    </section>
+
+    <section id="tiktok">
+      <h2>5. TikTok API & OAuth Connection</h2>
+
+      <h3>5.1 How the connection works</h3>
+      <p>
+        TT-Poster uses TikTok’s authorization flow (OAuth) so you can grant permissions to TT-Poster.
+        After successful authorization, TikTok provides tokens that allow TT-Poster to perform actions you explicitly request
+        (such as uploading a video as a draft or posting, depending on your enabled permissions and TikTok’s product capabilities).
+      </p>
+
+      <h3>5.2 Tokens and scope limitation</h3>
+      <ul>
+        <li>We request only the scopes needed to provide the selected functionality.</li>
+        <li>Access tokens are used to call TikTok APIs on your behalf. Refresh tokens may be used to obtain new access tokens.</li>
+      </ul>
+
+      <h3>5.3 Revoking access</h3>
+      <p>
+        You can revoke TT-Poster’s access at any time in TikTok’s account settings (or wherever TikTok provides revocation controls).
+        After revocation, TT-Poster can no longer act on your behalf via TikTok APIs.
+      </p>
+
+      <h3>5.4 TikTok as a separate controller</h3>
+      <p class="muted">
+        TikTok processes your data under its own privacy policy and terms. TT-Poster is not responsible for TikTok’s processing.
+      </p>
+    </section>
+
+    <section id="cookies">
+      <h2>6. Cookies & Analytics</h2>
+
+      <h3>6.1 Essential cookies</h3>
+      <p>
+        We may use essential cookies or similar technologies to keep you logged in, protect against abuse, and maintain basic functionality.
+      </p>
+
+      <h3>6.2 Analytics (optional)</h3>
+      <p class="muted">
+        If we use analytics in the future, we will (where required) ask for consent before storing non-essential cookies
+        and describe the provider and purpose here.
+      </p>
+
+      <h3>6.3 How to control cookies</h3>
+      <p>
+        You can control cookies via your browser settings. Disabling essential cookies may affect functionality.
+      </p>
+    </section>
+
+    <section id="sharing">
+      <h2>7. Sharing & Recipients</h2>
+      <p>We share personal data only when necessary to operate the service:</p>
+      <ul>
+        <li><strong>TikTok</strong>: to perform the actions you request (upload/publish) and to use TikTok APIs.</li>
+        <li><strong>Hosting/Infrastructure providers</strong>: to run the web app and store required data (e.g., logs, configuration).</li>
+        <li><strong>Service providers</strong> (if used): e.g., email support provider, monitoring, or security tooling.</li>
+        <li><strong>Authorities</strong>: if required by law or to protect rights and security.</li>
+      </ul>
+      <p class="muted">
+        We do not sell personal data.
+      </p>
+    </section>
+
+    <section id="retention">
+      <h2>8. Retention</h2>
+      <p>We keep personal data only as long as needed for the purposes described above:</p>
+      <ul>
+        <li><strong>OAuth tokens</strong>: stored only as long as needed to provide the service or until access is revoked; deleted/invalidated when no longer required.</li>
+        <li><strong>Videos</strong>: stored only for the time needed to transfer/upload to TikTok (and troubleshooting). After completion, temporary files are removed where possible.</li>
+        <li><strong>Logs</strong>: retained for a limited period for security and debugging, then deleted or anonymized.</li>
+        <li><strong>Support emails</strong>: retained as long as needed to handle your request and for reasonable follow-up.</li>
+      </ul>
+    </section>
+
+    <section id="security">
+      <h2>9. Security</h2>
+      <div class="box">
+        <p>
+          We implement appropriate technical and organizational measures to protect personal data, including access controls,
+          encryption in transit (HTTPS), and least-privilege access where feasible.
+        </p>
+        <p class="muted">
+          No system is 100% secure. Please protect your devices and accounts.
+        </p>
+      </div>
+    </section>
+
+    <section id="rights">
+      <h2>10. Your Rights (GDPR)</h2>
+      <p>If GDPR applies, you may have the right to:</p>
+      <ul>
+        <li>Request access to your personal data.</li>
+        <li>Request rectification or deletion.</li>
+        <li>Request restriction of processing.</li>
+        <li>Object to processing based on legitimate interests.</li>
+        <li>Data portability (where applicable).</li>
+        <li>Withdraw consent (where processing is based on consent).</li>
+        <li>Lodge a complaint with a supervisory authority.</li>
+      </ul>
+      <p>
+        To exercise rights, contact us at <a href="mailto:ttposter@gmx.de">ttposter@gmx.de</a>.
+      </p>
+    </section>
+
+    <section id="intl">
+      <h2>11. International Transfers</h2>
+      <p>
+        Depending on infrastructure and TikTok’s processing, data may be transferred outside your country (including outside the EU/EEA).
+        Where required, we rely on appropriate safeguards (e.g., standard contractual clauses) or another valid transfer mechanism.
+      </p>
+    </section>
+
+    <section id="changes">
+      <h2>12. Changes</h2>
+      <p>
+        We may update this Privacy Policy to reflect changes in the service, legal requirements, or third-party integrations.
+        The “Effective date” above indicates the latest version.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>13. Contact</h2>
+      <p>For privacy-related requests:</p>
+      <ul>
+        <li>Email: <a href="mailto:ttposter@gmx.de">ttposter@gmx.de</a></li>
+      </ul>
+    </section>
+
+    <hr style="border:0;border-top:1px solid #e6e6e6;margin:28px 0;" />
+    <p class="muted">
+      Tip for app review: make this page easily reachable from your homepage (e.g., footer links) and keep the URL stable.
+    </p>
+  </main>
+
+  <footer>
+    <div class="footerlinks">
+      <a href="./index.html">Home</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+    <div style="margin-top:10px;">© <span id="y"></span> TT-Poster</div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  </footer>
 </body>
 </html>
